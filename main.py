@@ -44,6 +44,7 @@ if username in users and users[username] == password:
     print("Welcome to the app, "+username.upper()+"\nWe have "+str(len(texts))+" texts to be anylyzed.")
     print(gap)
 else:
-    print("Neplatné jméno nebo heslo.")
+    print("Unregistered user, terminating the program..")
     quit()  
-choosen_text = input ("Enter a number btw."+str(texts.index[0])+" and "+str(texts.index[-1])+" to select: ")
+
+chosen_text = input ("Enter a number btw. 1 and "+str(len(texts))+" to select: ")
