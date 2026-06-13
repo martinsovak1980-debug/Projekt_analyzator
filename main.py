@@ -35,8 +35,8 @@ users = {
 }
 gap = "-"*48
 
-username = input("Zadejte vaše uživatelské jméno:")
-password = input("Zadejte Vaše heslo: ")
+username = input("Username: ")
+password = input("Password: ")
 print(gap)
 
 
@@ -48,3 +48,66 @@ else:
     quit()  
 
 chosen_text = input ("Enter a number btw. 1 and "+str(len(texts))+" to select: ")
+
+#not numeric sign
+if not chosen_text.isnumeric():  
+    print("It is not a number.")
+    quit()
+
+#invalid selection
+if  1 < int(chosen_text) > len(texts):
+    print("Invalid selection")  
+    quit()
+
+# Word count
+word_count = len((texts[int(chosen_text)-1]).split())
+print("There are "+str(word_count)+" words in the selected text.")
+
+# Titlecase words
+word_count_upper = 0
+for word in (texts[int(chosen_text)-1]).split():
+    if word.istitle():
+        word_count_upper += 1
+print("There are "+str(word_count_upper)+" titlecase words.")
+# word_count_upper = sum (1 for slovo in (texts[chosen_text-1]).split() if slovo[0].isupper())
+
+#Uppercase words
+uppercase_words = 0
+for word in (texts[int(chosen_text)-1]).split():
+    if word.isupper():
+        uppercase_words += 1
+print("There are "+str(uppercase_words)+" uppercase words.")
+
+# Lowercase words
+lowercase_words = 0
+for word in (texts[int(chosen_text)-1]).split():
+    if word.islower():
+        lowercase_words += 1
+print("There are "+str(lowercase_words)+" lowercase words.")
+
+# Numeric words
+numeric_words = 0
+for word in (texts[int(chosen_text)-1]).split():
+    if word.isnumeric():
+        numeric_words += 1
+print("There are "+str(numeric_words)+" numeric strings.")
+
+# sum of numbers
+sum_numbers = 0
+for word in (texts[int(chosen_text)-1]).split():
+    if word.isnumeric():
+        sum_numbers += int(word)
+print("The sum of all numbers " + str(sum_numbers))
+
+#graf
+print (gap)
+print ("LEN|    OCCURRENCES      |NR.")
+print (gap)
+progress_bar_sign = "*"
+
+list_cisla = []
+for word in (texts[int(chosen_text)-1]).split():
+    list_cisla.append(len(word))
+print(list_cisla)
+
+
