@@ -1,5 +1,5 @@
 #promenne
-TEXTS = [
+texts = [
     '''Situated about 10 miles west of Kemmerer,
     Fossil Butte is a ruggedly impressive
     topographic feature that rises sharply
@@ -33,10 +33,17 @@ users = {
 "mike":"password123",
 "liz":"pass12"
 }
+gap = "-"*48
 
 username = input("Zadejte vaše uživatelské jméno:")
 password = input("Zadejte Vaše heslo: ")
+print(gap)
 
 
-
-
+if username in users and users[username] == password:
+    print("Welcome to the app, "+username.upper()+"\nWe have "+str(len(texts))+" texts to be anylyzed.")
+    print(gap)
+else:
+    print("Neplatné jméno nebo heslo.")
+    quit()  
+choosen_text = input ("Enter a number btw."+str(texts.index[0])+" and "+str(texts.index[-1])+" to select: ")
