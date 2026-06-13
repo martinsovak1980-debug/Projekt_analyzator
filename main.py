@@ -104,10 +104,12 @@ print (gap)
 print ("LEN|    OCCURRENCES      |NR.")
 print (gap)
 progress_bar_sign = "*"
+words = (texts[int(chosen_text)-1]).split()
+words_lenght = [len(word) for word in words]
+max_lenght = max(words_lenght) if words_lenght else 0
 
-list_cisla = []
-for word in (texts[int(chosen_text)-1]).split():
-    list_cisla.append(len(word))
-print(list_cisla)
-
-
+for delka in range(1, max_lenght + 1):
+    pocet = words_lenght.count(delka)
+    if pocet > 0:
+        graf = progress_bar_sign * pocet
+        print(f"{delka:2}|{graf}        |({pocet})")
