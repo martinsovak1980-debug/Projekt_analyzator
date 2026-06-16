@@ -35,19 +35,26 @@ users = {
 }
 gap = "-"*48
 
-username = input("Username: ")
-password = input("Password: ")
-print(gap)
-
-
-if username in users and users[username] == password:
-    print("Welcome to the app, "+username.upper()+"\nWe have "+str(len(texts))+" texts to be anylyzed.")
+attempt =0
+while  attempt<3:
+    username = input("Username: ")
+    password = input("Password: ")
     print(gap)
-else:
-    print("Unregistered user, terminating the program..")
-    quit()  
 
-chosen_text = input ("Enter a number btw. 1 and "+str(len(texts))+" to select: ")
+    if username in users and users[username] == password:
+        print("Welcome to the app, "+username.upper()+"\nWe have "+str(len(texts))+" texts to be anylyzed.")
+        print(gap)
+        break
+    else:
+       
+        attempt += 1
+        if attempt < 3:
+            print("Try again. You have "+str(3-attempt)+" attempts left.")
+        else:  
+            print("Unregistered user, terminating the program..") 
+            quit()  
+
+chosen_text = input ("Enter a number btw. 1 and "+str(len(texts))+" to select stored text or 0 to input own text: ")
 
 #not numeric sign
 if not chosen_text.isnumeric():  
@@ -58,6 +65,12 @@ if not chosen_text.isnumeric():
 if  1 < int(chosen_text) > len(texts):
     print("Invalid selection")  
     quit()
+
+if int(chosen_text) == 0:   
+    own_text = input("Enter your own text: ")
+    texts.append(own_text)
+    chosen_text = len(texts)
+    print("Your text has been added to the list of texts to be analyzed."+"\nWe have "+str(chosen_text)+" texts to be anylyzed.")
 
 # Word count
 word_count = len((texts[int(chosen_text)-1]).split())
@@ -103,6 +116,7 @@ print("The sum of all numbers " + str(sum_numbers))
 print (gap)
 print ("LEN|    OCCURRENCES      |NR.")
 print (gap)
+
 progress_bar_sign = "*"
 words = (texts[int(chosen_text)-1]).split()
 words_length = [len(word) for word in words]
